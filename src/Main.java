@@ -14,7 +14,6 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) {
-       //Scanner scanner = new Scanner(System.in);
 
         LotteryNumberGenerator generator = new LotteryNumberGenerator();
         UserInput userInput = new UserInput();
@@ -28,7 +27,7 @@ public class Main {
 
             if (selection == 3) {
                 System.out.println("Выход из программы.");
-                break; // Завершение выполнения цикла и программы
+                break;
             }
 
             int numCombinations = userInput.getNumCombinations();
@@ -46,7 +45,7 @@ public class Main {
                     userSet = generator.generateNumbers();
                 } else {
                     System.out.println("Неверный выбор.");
-                    continue; // Переход к следующей итерации цикла
+                    continue;
                 }
 
                 System.out.println("Вы выбрали следующие числа : " + userSet);
