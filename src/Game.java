@@ -44,10 +44,12 @@ public class Game {
                 if (resultChecker.isJackpot(matchCount)) {
                     System.out.println("!!!JACKPOT!!!");
                 } else if (matchCount > 0) {
-                    System.out.println("Вам удалось угадать число(а) : " + resultChecker.getMatchingNumbers(randomSet, userSet));
+                    System.out.println("Вам удалось угадать число(а) : "
+                            + resultChecker.getMatchingNumbers(randomSet, userSet));
                 }
 
-                resultChecker.updateBestCombinations(userSet, matchCount, bestMatchCount, bestCombinations);
+                resultChecker.updateBestCombinations(userSet,
+                        matchCount, bestMatchCount, bestCombinations);
                 if (matchCount > bestMatchCount) {
                     bestMatchCount = matchCount;
                 }
