@@ -21,8 +21,8 @@ public class UserInput {
     public int getSelection(){
         System.out.println("\nВыберите что вы хотите : ");
         System.out.println("1. Вводить числа самостоятельно");
-        System.out.println("2. Или предоставить это дело компьютеру");
-        System.out.println("3. Выход");
+        System.out.println("2. Доверить это дело компьютеру");
+        System.out.println("3. Закрыть приложение");
         return scanner.nextInt();
     }
 
