@@ -4,7 +4,7 @@ import java.util.TreeSet;
 
 public class UserInput {
 
-    private static final int COUNTER_MAX_NUMBER = 6;
+    private static final int COUNTER_MAX_VALUE = 6;
     private Scanner scanner;
 
     public UserInput() {
@@ -14,7 +14,7 @@ public class UserInput {
     public Set<Integer> getUserNumbers(){
         Set<Integer> userSet = new TreeSet<>();
         System.out.println("Введите 6 чисел от 1 до 45 :");
-        while (userSet.size() < COUNTER_MAX_NUMBER) {
+        while (userSet.size() < COUNTER_MAX_VALUE) {
             userSet.add(scanner.nextInt());
         }
         return userSet;
