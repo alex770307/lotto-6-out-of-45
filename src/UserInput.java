@@ -29,7 +29,8 @@ public class UserInput {
     }
 
     public int getNumCombinations(){
-        System.out.println("Введите количество комбинаций, которые вы хотите ввести/сгенерировать:");
+        System.out.println("Введите количество комбинаций, " +
+                "которые вы хотите ввести/сгенерировать:");
         return scanner.nextInt();
     }
 }
