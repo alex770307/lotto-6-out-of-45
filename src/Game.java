@@ -13,13 +13,14 @@ public class Game {
         this.userInput = userInput;
         this.resultChecker = resultChecker;
     }
+
     public void start() {
-        System.out.println("\nДобро пожадовать в Лото 6 из 45!");
+        GameMessage.WELCOME.print();
         while (true) {
             Set<Integer> randomSet = numberGenerator.generateNumbers();
             int selection = userInput.getSelection();
-            if (selection == 3) {
-                System.out.println("Выход из программы.");
+            if (selection== GameSelection.EXIT.getChoice()) {
+                GameMessage.EXIT.print();
                 break;
             }
 
@@ -29,23 +30,23 @@ public class Game {
 
             for (int i = 0; i < numCombinations; i++) {
                 Set<Integer> userSet;
-                if (selection == 1) {
+                if (selection == GameSelection.INPUT.getChoice()) {
                     userSet = userInput.getUserNumbers();
-                } else if (selection == 2) {
+                } else if (selection == GameSelection.GENERATION.getChoice()) {
                     userSet = numberGenerator.generateNumbers();
                 } else {
-                    System.out.println("Неверный выбор.");
+                    GameMessage.INVALID_CHOICE.print();
                     continue;
                 }
 
-                System.out.println("Вы выбрали следующие числа : " + userSet);
+                GameMessage.SELECTED_NUMBERS.print(userSet.toString()) ;
                 int matchCount = resultChecker.getMatchCount(randomSet, userSet);
-                System.out.println("Количество угаданных чисел : " + matchCount);
+                GameMessage.MATCH_COUNT.print(String.valueOf(matchCount));
                 if (resultChecker.isJackpot(matchCount)) {
-                    System.out.println("!!!JACKPOT!!!");
+                    GameMessage.JACKPOT.print();
                 } else if (matchCount > 0) {
-                    System.out.println("Вам удалось угадать число(а) : "
-                            + resultChecker.getMatchingNumbers(randomSet, userSet));
+                    GameMessage.MATCHED_NUMBERS.print
+                            (resultChecker.getMatchingNumbers(randomSet,userSet).toString());
                 }
 
                 resultChecker.updateBestCombinations(userSet,
@@ -55,11 +56,11 @@ public class Game {
                 }
             }
 
-            System.out.println("Наилучший результат: " + bestMatchCount + " угаданных чисел");
+            GameMessage.BEST_RESULT.print(bestMatchCount + GameMessage.AMOUNT.getMessage() ) ;
             for (Set<Integer> combination : bestCombinations) {
-                System.out.println("Комбинация: " + combination);
+                GameMessage.COMBINATION.print(combination.toString());
             }
-            System.out.println("Квази Случайно выпавшие числа :  " + randomSet);
+            GameMessage.RANDOM_NUMBERS.print(randomSet.toString());
         }
     }
 
