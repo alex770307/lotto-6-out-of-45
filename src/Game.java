@@ -28,16 +28,16 @@ public class Game {
             int bestMatchCount = 0;
             List<Set<Integer>> bestCombinations = new ArrayList<>();
 
+            Set<Integer> userSet;
+            if (selection == GameSelection.INPUT.getChoice()) {
+                userSet = userInput.getUserNumbers();
+            } else if (selection == GameSelection.GENERATION.getChoice()) {
+                userSet = numberGenerator.generateNumbers();
+            } else {
+                GameMessage.INVALID_CHOICE.print();
+                continue;
+            }
             for (int i = 0; i < numCombinations; i++) {
-                Set<Integer> userSet;
-                if (selection == GameSelection.INPUT.getChoice()) {
-                    userSet = userInput.getUserNumbers();
-                } else if (selection == GameSelection.GENERATION.getChoice()) {
-                    userSet = numberGenerator.generateNumbers();
-                } else {
-                    GameMessage.INVALID_CHOICE.print();
-                    continue;
-                }
 
                 GameMessage.SELECTED_NUMBERS.print(userSet.toString()) ;
                 int matchCount = resultChecker.getMatchCount(randomSet, userSet);
