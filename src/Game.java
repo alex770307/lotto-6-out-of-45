@@ -14,7 +14,7 @@ public class Game {
         this.resultChecker = resultChecker;
     }
 
-    public void play() {
+    public void start() {
         GameMessage.WELCOME.print();
         while (true) {
             Set<Integer> randomSet = numberGenerator.generateNumbers();
@@ -63,12 +63,5 @@ public class Game {
             GameMessage.RANDOM_NUMBERS.print(randomSet.toString());
         }
     }
-    public void start() {
-        try {
-            play();
-        } catch (Exception e) {
-            System.out.println("Произошла ошибка во время выполнения игры: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
+
 }
