@@ -63,5 +63,4 @@ public class Game {
             GameMessage.RANDOM_NUMBERS.print(randomSet.toString());
         }
     }
-
 }
