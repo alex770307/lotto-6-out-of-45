@@ -14,7 +14,7 @@ public class Game {
         this.resultChecker = resultChecker;
     }
 
-    public void start() {
+    void start() {
         GameMessage.WELCOME.print();
         while (true) {
             Set<Integer> randomSet = numberGenerator.generateNumbers();
@@ -28,7 +28,6 @@ public class Game {
             int bestMatchCount = 0;
             List<Set<Integer>> bestCombinations = new ArrayList<>();
 
-
             for (int i = 0; i < numCombinations; i++) {
                 Set<Integer> userSet;
                 if (selection == GameSelection.INPUT.getChoice()) {
@@ -39,6 +38,7 @@ public class Game {
                     GameMessage.INVALID_CHOICE.print();
                     continue;
                 }
+
                 GameMessage.SELECTED_NUMBERS.print(userSet.toString()) ;
                 int matchCount = resultChecker.getMatchCount(randomSet, userSet);
                 GameMessage.MATCH_COUNT.print(String.valueOf(matchCount));
